@@ -3,7 +3,7 @@
 	public class Validation<T>
 	{
 		private readonly T _object;
-		private readonly string _paramName = string.Empty;
+		private readonly string _paramName;
 
 		public Validation(ParamMember<T> paramMember)
 		{

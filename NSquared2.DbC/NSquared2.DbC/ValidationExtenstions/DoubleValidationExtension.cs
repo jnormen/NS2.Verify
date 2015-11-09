@@ -9,7 +9,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 		public static Validation<double> NotLessThan(this Validation<double> item, double value)
 		{
 			if (item.Value < value)
-				throw new ArgumentOutOfRangeException(string.Format("InputParam '{0}' cannot be less than '{1}'", item.ParameterName, value));
+				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be less than '{value}'");
 
 			return item;
 		}
@@ -18,7 +18,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 		public static Validation<double> NotGreaterThan(this Validation<double> item, double value)
 		{
 			if (item.Value > value)
-				throw new ArgumentOutOfRangeException(string.Format("InputParam '{0}' cannot be greater than '{1}'", item.ParameterName, value));
+				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be greater than '{value}'");
 
 			return item;
 		}

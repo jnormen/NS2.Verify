@@ -22,13 +22,13 @@ namespace NSquared2.DbC
 		private static void RequireT<T>(T @object)
 		{
 			if (@object == null)
-				throw new ArgumentNullException("@object", "input for contract cannot be null! You must specify some object for validation!");
+				throw new ArgumentNullException(nameof(@object), "input for contract cannot be null! You must specify some object for validation!");
 		}
 
 		private static void RequireArgumentName(string argumentName)
 		{
 			if (argumentName == null)
-				throw new ArgumentNullException("argumentName", "inputparam argumentName cannot be null! You must specify a name, this name is udes for the contract exception restult!");
+				throw new ArgumentNullException(nameof(argumentName), "inputparam argumentName cannot be null! You must specify a name, this name is used for the contract exception restult!");
 		}
 
 		private static ParamMember<T> GetParamMember<T>(T @object, string argumentName)

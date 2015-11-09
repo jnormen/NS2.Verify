@@ -30,7 +30,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 				if (!ignoreMembers.Contains(propertyInfo.Name))
 				{
 					if (propertyInfo.GetValue(_item.Value, null) == null)
-						throw new ArgumentNullException(string.Format("Property '{0}' in '{1}' cannot be null!", propertyInfo.Name, _item.ParameterName));
+						throw new ArgumentNullException($"Property '{propertyInfo.Name}' in '{_item.ParameterName}' cannot be null!");
 				}
 			}
 
@@ -50,7 +50,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 			{
 				if (!ignoreMembers.Contains(propertyInfo.Name)) continue;
 				if (propertyInfo.GetValue(_item.Value, null) == null)
-					throw new ArgumentNullException(string.Format("Property '{0}' in '{1}' cannot be null!", propertyInfo.Name, _item.ParameterName));
+					throw new ArgumentNullException($"Property '{propertyInfo.Name}' in '{_item.ParameterName}' cannot be null!");
 			}
 
 			return _item;
@@ -70,7 +70,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 			foreach (var propertyInfo in propertyInfos)
 			{
 				if (propertyInfo.GetValue(_item.Value, null) == null)
-					throw new ArgumentNullException(string.Format("Property '{0}' in '{1}' cannot be null!", propertyInfo.Name, _item.ParameterName));
+					throw new ArgumentNullException($"Property '{propertyInfo.Name}' in '{_item.ParameterName}' cannot be null!");
 			}
 
 			return _item;

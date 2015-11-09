@@ -10,7 +10,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 		public static Validation<string> NotShorterThan(this Validation<string> item, int value)
 		{
 			if (item.Value.Length < value)
-				throw new ArgumentOutOfRangeException(string.Format("InputParam '{0}' cannot be less than '{1}'", item.ParameterName, value));
+				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be less than '{value}'");
 
 			return item;
 		}
@@ -19,7 +19,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 		public static Validation<string> NotLongerThan(this Validation<string> item, int value)
 		{
 			if (item.Value.Length > value)
-				throw new ArgumentOutOfRangeException(string.Format("InputParam '{0}' cannot be greater than '{1}'", item.ParameterName, value));
+				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be greater than '{value}'");
 
 			return item;
 		}
@@ -28,7 +28,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 		public static Validation<string> NotNullOrEmpty(this Validation<string> item)
 		{
 			if (string.IsNullOrWhiteSpace(item.Value))
-				throw  new ArgumentNullException(string.Format("Parameter '{0}' cannot be null or empty string!", item.ParameterName));
+				throw  new ArgumentNullException($"Parameter '{item.ParameterName}' cannot be null or empty string!");
 			return item;
 		}
 
@@ -39,7 +39,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 				throw new ArgumentException("InputParam 'pattern' for StartsWith cannot be null or empty!");
 
 			if (item.Value != null && !item.Value.StartsWith(pattern))
-				throw new ArgumentException(string.Format("Parameter '{0}' must start with '{1}'!", item.ParameterName, pattern));
+				throw new ArgumentException($"Parameter '{item.ParameterName}' must start with '{pattern}'!");
 			return item;
 		}
 
@@ -50,7 +50,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 				throw new ArgumentException("InputParam 'pattern' for EndsWith cannot be null or empty!");
 
 			if (item.Value != null && !item.Value.EndsWith(pattern))
-				throw new ArgumentOutOfRangeException(string.Format("Parameter '{0}' must end with '{1}'!", item.ParameterName, pattern));
+				throw new ArgumentOutOfRangeException($"Parameter '{item.ParameterName}' must end with '{pattern}'!");
 			return item;
 		}
 
@@ -61,7 +61,8 @@ namespace NSquared2.DbC.ValidationExtenstions
 				throw new ArgumentException("NotBasedOn cannot have an empty or null regularExspression!");
 
 			if (!Regex.IsMatch(item.Value, regularExpression))
-				throw new ArgumentException(string.Format("The regualarExrpession '{0}' don't match with the string '{1}'!", regularExpression, item.ParameterName));
+				throw new ArgumentException(
+				    $"The regualarExrpession '{regularExpression}' don't match with the string '{item.ParameterName}'!");
 			return item;
 		}
 

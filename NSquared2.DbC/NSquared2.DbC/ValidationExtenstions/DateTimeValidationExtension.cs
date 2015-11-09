@@ -9,7 +9,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 		public static Validation<DateTime> IsNotDefault(this Validation<DateTime> item)
 		{
 			if (item.Value == new DateTime())
-				throw new ArgumentNullException(string.Format("InputParam '{0}' cannot deafult value: '{1}'", item.ParameterName, item.Value));
+				throw new ArgumentNullException($"InputParam '{item.ParameterName}' cannot deafult value: '{item.Value}'");
 
 			return item;
 		}
@@ -18,7 +18,7 @@ namespace NSquared2.DbC.ValidationExtenstions
 		public static Validation<DateTime?> IsNotNull(this Validation<DateTime?> item)
 		{
 			if (!item.Value.HasValue)
-				throw new ArgumentNullException(string.Format("InputParam '{0}' cannot be null", item.ParameterName, item.Value));
+				throw new ArgumentNullException($"InputParam '{item.ParameterName}' cannot be null");
 
 			return item;
 		}
