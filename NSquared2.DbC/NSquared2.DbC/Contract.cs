@@ -6,7 +6,7 @@ namespace NSquared2.DbC
     public static class Contract
 	{
 		[DebuggerHidden]
-		public static Validation<T> Require<T>(T @object, string argumentName)
+		public static Validation<T> Require<T>(string argumentName,T @object)
 		{
 			return GetValidation(@object, argumentName);
 		}
