@@ -42,7 +42,7 @@ namespace NS2.DbC
 				return item;
 
 			throw new ArgumentException(
-			    $"Your validation Predicate<T> did not meet the expected validation cireteria for '{item.ParameterName}'");
+			    $"Your validation for Predicates did not meet the expected validation cireteria for '{item.ParameterName}'");
 		}
 	}
 }

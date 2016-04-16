@@ -8,6 +8,7 @@ namespace NS2.DbC.Test
         public class FakeObject
         {
             public string Name { get; set; }
+            public string Name2 { get; set; }
         }
 
         [Fact]
@@ -96,6 +97,30 @@ namespace NS2.DbC.Test
             Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe");
 
         }
+
+        [Fact]
+        public void When_Validate_An_Object_With_Must_With_One_Valid_Value_And_One_That_Are_Not_Valid_Expect_ArgumentException()
+        {
+            ////Arrange
+            var fakeObject = new FakeObject { Name = "john Doe" };
+
+            ////Act & Test
+            Assert.Throws<ArgumentException>(() =>
+            Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 != null));
+
+        }
+
+        [Fact]
+        public void When_Validate_An_Object_With_Must_With_Two_Valid_Value_Expect_Sucess()
+        {
+            ////Arrange
+            var fakeObject = new FakeObject { Name = "john Doe", Name2 = "john Doe2"};
+
+            ////Act
+            Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 == "john Doe2");
+
+        }
+
 
         [Fact]
         public void When_Call_Must_With_A_Predicate_That_Will_Not_Be_Valid_Expect_Failur()

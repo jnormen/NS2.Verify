@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace NS2.DbC
 {
@@ -27,7 +28,7 @@ namespace NS2.DbC
 		private static ParamMember<T> GetParamMember<T>(T @object, string argumentName)
 		{
 			var member = argumentName;
-			return new ParamMember<T> { MemberName = member, ParamValue = @object };
+			return new ParamMember<T> { MemberName = member, ParamValue = @object};
 		}
 	}
 }
