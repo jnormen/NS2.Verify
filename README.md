@@ -1,13 +1,66 @@
-# NSquared2.Dbc
+# NS2.Dbc
 
-This is a Extensible flunet contract validation framework. It does not not have any support for invariant checks.
+This is a Extensible fluent contract validation framework.<br> 
+Made for .Net, the solution uses .Net Core <br>
+It does not not have any support for invariant checks.<br>
 Just inputs and outputs... 
 
-public void AddUsername(Email username)
-{
-    Contract.Require(nameof(username), username)
+<code>
+public void AddUsername(Email username)</br>
+{</br>
+            Contract.Require(nameof(username), username)
             .NotNull()
-            .IsEmail()
-            
+            .IsEmail();</br>
+}</br>
+</code>
+
+You can simple extend it with your own validation rules for your objects. </br>
+Just add an extension for: 
+</br>
+<code>
+Validation< T >
+</code>
+</br>
+
+Exmampel:</br>
+public static Validation<DateTime> IsNotDefault(this Validation< DateTime> item)
+
+This Contract framework will give you just that Validation< T > objects extension fluent validations methods. 
+So int, string etc have their own validation methods. 
+</br>
+
+Sampelcode of the StringValidationExtention
+
+<code>
+public static class StringValidationExtension
+	{
+		[DebuggerHidden]
+		public static Validation<string> NotShorterThan(this Validation<string> item, int value)
+		{
+			if (item.Value.Length < value)
+				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be less than '{value}'");
+
+			return item;
+		}
+
+		[DebuggerHidden]
+		public static Validation<string> NotLongerThan(this Validation<string> item, int value)
+		{
+			if (item.Value.Length > value)
+				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be greater than '{value}'");
+
+			return item;
+		}
+
+		[DebuggerHidden]
+		public static Validation<string> NotNullOrEmpty(this Validation<string> item)
+		{
+			if (string.IsNullOrWhiteSpace(item.Value))
+				throw  new ArgumentNullException($"Parameter '{item.ParameterName}' cannot be null or empty string!");
+			return item;
+		}
 }
+</code>
+		
+
 
