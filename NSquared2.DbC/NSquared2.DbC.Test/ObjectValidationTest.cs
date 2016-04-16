@@ -12,10 +12,25 @@ namespace NS2.DbC.Test
             public string Name { get; set; }
         }
 
-        public struct  FakeStruct
+        [Fact]
+        public void When_Call_IsOfType_With_Correct_Type_Expect_Success()
         {
-            public string Name { get; set; }
+            ////Arrange
+            var fakeObject = new FakeObject { Name = "john Doe" };
 
+            ////Act
+            Contract.Require(nameof(fakeObject), fakeObject).IsOfType(fakeObject.GetType());
+        }
+
+        [Fact]
+        public void When_Call_IsOfType_With_Wrong__Type_Expect_ArgumentException()
+        {
+            ////Arrange
+            var fakeObject = new FakeObject { Name = "john Doe" };
+
+            ////Act & Test
+            Assert.Throws<ArgumentException>( () =>
+            Contract.Require(nameof(fakeObject), fakeObject).IsOfType(GetType()));
         }
 
         [Fact]

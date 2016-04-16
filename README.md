@@ -1,20 +1,17 @@
 # NS2.Dbc
-
 This is a Extensible fluent contract validation framework.<br> 
 Made for .Net, the solution uses .Net Core <br>
 It does not not have any support for invariant checks.<br>
-Just inputs and outputs...
-<code>
+Just inputs and outputs.<code>
 ```javascript
-public void AddUsername(Email username)
+public void AddUsername(string username)
 {
             Contract.Require(nameof(username), username)
             .NotNull()
             .IsEmail();
 }
 ```
-</code>
-You can simple extend it with your own validation rules for your objects. </br>
+</code>You can simple extend it with your own validation rules for your objects. </br>
 Just add an extension for:
 <code>
 ```javascript
