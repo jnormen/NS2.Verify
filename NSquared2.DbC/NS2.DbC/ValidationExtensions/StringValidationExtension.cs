@@ -55,7 +55,7 @@ namespace NS2.DbC
 		}
 
 		[DebuggerHidden]
-		public static Validation<string> ISBasedOn(this Validation<string> item, string regularExpression)
+		public static Validation<string> IsBasedOn(this Validation<string> item, string regularExpression)
 		{
 			if (string.IsNullOrWhiteSpace(regularExpression))
 				throw new ArgumentException("NotBasedOn cannot have an empty or null regularExspression!");
@@ -70,7 +70,7 @@ namespace NS2.DbC
 		public static Validation<string> IsUrl(this Validation<string> item)
 		{
 			return
-				item.ISBasedOn(
+				item.IsBasedOn(
 					@"/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/");
 		}
 		
@@ -78,7 +78,7 @@ namespace NS2.DbC
 		public static Validation<string> IsEmail(this Validation<string> item)
 		{
 			return
-				item.ISBasedOn(
+				item.IsBasedOn(
 					@"^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+)*$");
 		}
 	}

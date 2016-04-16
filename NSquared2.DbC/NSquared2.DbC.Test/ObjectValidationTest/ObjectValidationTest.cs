@@ -1,30 +1,25 @@
 ﻿using System;
+using NSquared2.DbC.Test.ObjectValidationTest;
 using Xunit;
 
 namespace NS2.DbC.Test
 {
-    public class ObjectValidationTest
+    public class NotDefault
     {
-        public class FakeObject
-        {
-            public string Name { get; set; }
-            public string Name2 { get; set; }
-        }
-
         [Fact]
-        public void When_Call_NotDefault_With_Default_Object_Expect_ArgumentException()
+        public void _With_Default_Object_Expect_ArgumentException()
         {
             ////Arrange
             FakeObject fakeObject = default(FakeObject);
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-            Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
+                Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
         }
 
 
         [Fact]
-        public void When_Call_NotDefault_With_Valid_Guid_Expect_Success()
+        public void _With_Valid_Guid_Expect_Success()
         {
             ////Arrange
             Guid guid = Guid.NewGuid();
@@ -34,29 +29,29 @@ namespace NS2.DbC.Test
         }
 
         [Fact]
-        public void When_Call_NotDefault_With_Empty_Guid_Expect_ArgumentException()
+        public void _With_Empty_Guid_Expect_ArgumentException()
         {
             ////Arrange
             Guid guid = Guid.Empty;
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-            Contract.Require(nameof(guid), guid).NotDefault());
+                Contract.Require(nameof(guid), guid).NotDefault());
         }
 
         [Fact]
-        public void When_Call_NotDefault_With_Null_Expect_ArgumentException()
+        public void _With_Null_Expect_ArgumentException()
         {
             ////Arrange
             FakeObject fakeObject = null;
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-            Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
+                Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
         }
 
         [Fact]
-        public void When_Call_NotDefault_With_Valid_Object_Expect_Success()
+        public void _With_Valid_Object_Expect_Success()
         {
             ////Arrange
             var fakeObject = new FakeObject { Name = "john Doe" };
@@ -65,9 +60,13 @@ namespace NS2.DbC.Test
             Contract.Require(nameof(fakeObject), fakeObject).NotDefault();
         }
 
+    }
+
+    public class IsOfType
+    {
 
         [Fact]
-        public void When_Call_IsOfType_With_Correct_Type_Expect_Success()
+        public void _With_Correct_Type_Expect_Success()
         {
             ////Arrange
             var fakeObject = new FakeObject { Name = "john Doe" };
@@ -77,21 +76,25 @@ namespace NS2.DbC.Test
         }
 
         [Fact]
-        public void When_Call_IsOfType_With_Wrong__Type_Expect_ArgumentException()
+        public void _With_Wrong__Type_Expect_ArgumentException()
         {
             ////Arrange
             var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act & Test
-            Assert.Throws<ArgumentException>( () =>
-            Contract.Require(nameof(fakeObject), fakeObject).IsOfType(GetType()));
+            Assert.Throws<ArgumentException>(() =>
+                Contract.Require(nameof(fakeObject), fakeObject).IsOfType(GetType()));
         }
+    }
+
+    public class Must
+    {
 
         [Fact]
-        public void When_Call_Must_With_A_Predicate_That_Will_Validate_Expect_Success()
+        public void _With_A_Predicate_That_Will_Validate_Expect_Success()
         {
             ////Arrange
-            var fakeObject = new FakeObject {Name = "john Doe"};
+            var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act
             Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe");
@@ -99,22 +102,22 @@ namespace NS2.DbC.Test
         }
 
         [Fact]
-        public void When_Validate_An_Object_With_Must_With_One_Valid_Value_And_One_That_Are_Not_Valid_Expect_ArgumentException()
+        public void _With_One_Valid_Value_And_One_That_Are_Not_Valid_Expect_ArgumentException()
         {
             ////Arrange
             var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-            Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 != null));
+                Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 != null));
 
         }
 
         [Fact]
-        public void When_Validate_An_Object_With_Must_With_Two_Valid_Value_Expect_Sucess()
+        public void _With_Two_Valid_Properties_Expect_Sucess()
         {
             ////Arrange
-            var fakeObject = new FakeObject { Name = "john Doe", Name2 = "john Doe2"};
+            var fakeObject = new FakeObject { Name = "john Doe", Name2 = "john Doe2" };
 
             ////Act
             Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 == "john Doe2");
@@ -123,19 +126,22 @@ namespace NS2.DbC.Test
 
 
         [Fact]
-        public void When_Call_Must_With_A_Predicate_That_Will_Not_Be_Valid_Expect_Failur()
+        public void _With_A_Predicate_That_Will_Not_Be_Valid_Expect_Failur()
         {
             ////Arrange
-            var fakeObject = new FakeObject {Name = "john Doe"};
+            var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act & Test
-            Assert.Throws<ArgumentException>( () => 
-            Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "Some other"));
+            Assert.Throws<ArgumentException>(() =>
+                Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "Some other"));
 
         }
+    }
+    public class NotNull
+    {
 
         [Fact]
-        public void When_Call_NotNull_With_An_Object_Expect_Success()
+        public void _With_An_Object_Expect_Success()
         {
             ////Arrange
             var fakeObject = new FakeObject { Name = "john Doe" };
@@ -145,21 +151,21 @@ namespace NS2.DbC.Test
 
         }
 
-        
+
         [Fact]
-        public void When_Call_NotNull_With_An_Null_Object_Expect_ArgumentNullException()
+        public void _With_An_Null_Object_Expect_ArgumentNullException()
         {
             ////Arrange
             FakeObject fakeObject = null;
 
             ////Act & Test
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
             Contract.Require(nameof(fakeObject), fakeObject).NotNull());
 
         }
 
         [Fact]
-        public void When_Call_NotNull_With_An_Null_Object_Expect_That_NotNull_Does_Not_Thorw_Any_Other_Excpetion_Than_ArgumentNullException()
+        public void _With_An_Null_Object_Expect_That_NotNull_Does_Not_Thorw_Any_Other_Excpetion_Than_ArgumentNullException()
         {
             ////Arrange
             FakeObject fakeObject = null;
@@ -174,7 +180,7 @@ namespace NS2.DbC.Test
             {
                 someException = ex;
             }
-            
+
             ////Test
             Assert.IsNotType<ArgumentException>(someException);
         }
