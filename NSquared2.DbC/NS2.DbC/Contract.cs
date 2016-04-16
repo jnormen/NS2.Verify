@@ -21,7 +21,7 @@ namespace NS2.DbC
 		private static void RequireArgumentName(string argumentName)
 		{
 			if (argumentName == null)
-				throw new ArgumentNullException(nameof(argumentName), "inputparam argumentName cannot be null! You must specify a name, this name is used for the contract exception restult!");
+				throw new ArgumentNullException(nameof(argumentName), $"inputparam {nameof(argumentName)} cannot be null! You must specify a name, this name is used for the contract exception restult!");
 		}
 
 		private static ParamMember<T> GetParamMember<T>(T @object, string argumentName)

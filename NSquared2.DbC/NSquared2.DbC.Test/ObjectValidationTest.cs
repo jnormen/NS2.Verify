@@ -3,14 +3,67 @@ using Xunit;
 
 namespace NS2.DbC.Test
 {
-    // This project can output the Class library as a NuGet Package.
-    // To enable this option, right-click on the project and select the Properties menu item. In the Build tab select "Produce outputs on build".
     public class ObjectValidationTest
     {
         public class FakeObject
         {
             public string Name { get; set; }
         }
+
+        [Fact]
+        public void When_Call_NotDefault_With_Default_Object_Expect_ArgumentException()
+        {
+            ////Arrange
+            FakeObject fakeObject = default(FakeObject);
+
+            ////Act & Test
+            Assert.Throws<ArgumentException>(() =>
+            Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
+        }
+
+
+        [Fact]
+        public void When_Call_NotDefault_With_Valid_Guid_Expect_Success()
+        {
+            ////Arrange
+            Guid guid = Guid.NewGuid();
+
+            ////Act
+            Contract.Require(nameof(guid), guid).NotDefault();
+        }
+
+        [Fact]
+        public void When_Call_NotDefault_With_Empty_Guid_Expect_ArgumentException()
+        {
+            ////Arrange
+            Guid guid = Guid.Empty;
+
+            ////Act & Test
+            Assert.Throws<ArgumentException>(() =>
+            Contract.Require(nameof(guid), guid).NotDefault());
+        }
+
+        [Fact]
+        public void When_Call_NotDefault_With_Null_Expect_ArgumentException()
+        {
+            ////Arrange
+            FakeObject fakeObject = null;
+
+            ////Act & Test
+            Assert.Throws<ArgumentException>(() =>
+            Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
+        }
+
+        [Fact]
+        public void When_Call_NotDefault_With_Valid_Object_Expect_Success()
+        {
+            ////Arrange
+            var fakeObject = new FakeObject { Name = "john Doe" };
+
+            ////Act
+            Contract.Require(nameof(fakeObject), fakeObject).NotDefault();
+        }
+
 
         [Fact]
         public void When_Call_IsOfType_With_Correct_Type_Expect_Success()
