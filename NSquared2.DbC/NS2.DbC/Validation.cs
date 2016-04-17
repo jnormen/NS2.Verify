@@ -1,4 +1,4 @@
-﻿namespace NS2.DbC
+﻿namespace NS2.Verify
 {
 	public class Validation<T>
 	{

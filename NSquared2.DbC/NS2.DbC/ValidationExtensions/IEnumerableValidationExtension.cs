@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace NS2.DbC
+namespace NS2.Verify
 {
     public static class IEnumerableValidationExtension
 	{

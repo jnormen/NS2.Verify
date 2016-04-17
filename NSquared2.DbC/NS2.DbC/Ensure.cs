@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace NS2.DbC
+namespace NS2.Verify
 {
-    public static class Contract
+    public static class Ensure
 	{
 		[DebuggerHidden]
-		public static Validation<T> Require<T>(string argumentName,T @object)
+		public static Validation<T> That<T>(string argumentName,T @object)
 		{
 			return GetValidation(@object, argumentName);
 		}

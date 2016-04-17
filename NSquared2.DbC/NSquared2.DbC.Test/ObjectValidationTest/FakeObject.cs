@@ -1,4 +1,4 @@
-﻿namespace NSquared2.DbC.Test.ObjectValidationTest
+﻿namespace NS2.Verify.Test.ObjectValidationTest
 {
     public class FakeObject
     {

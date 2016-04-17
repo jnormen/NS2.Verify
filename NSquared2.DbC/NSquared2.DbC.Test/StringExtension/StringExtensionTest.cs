@@ -1,8 +1,7 @@
 ﻿using System;
-using NS2.DbC;
 using Xunit;
 
-namespace NSquared2.DbC.Test
+namespace NS2.Verify.Test.StringExtension
 {
     public class NotNullOrEmpty
     {
@@ -13,7 +12,7 @@ namespace NSquared2.DbC.Test
             var someString = "A1234";
 
             ////Act & Test
-            Contract.Require(nameof(someString), someString).NotNullOrEmpty();
+            Ensure.That(nameof(someString), someString).NotNullOrEmpty();
         }
 
         [Fact]
@@ -24,7 +23,7 @@ namespace NSquared2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentNullException>(() =>
-            Contract.Require(nameof(someString), someString).NotNullOrEmpty());
+            Ensure.That(nameof(someString), someString).NotNullOrEmpty());
         }
 
         [Fact]
@@ -35,7 +34,7 @@ namespace NSquared2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentNullException>(() =>
-            Contract.Require(nameof(someString), someString).NotNullOrEmpty());
+            Ensure.That(nameof(someString), someString).NotNullOrEmpty());
         }
     }
 
@@ -48,7 +47,7 @@ namespace NSquared2.DbC.Test
             var someString = "A1234";
 
             ////Act & Test
-            Contract.Require(nameof(someString), someString).NotShorterThan(3);
+            Ensure.That(nameof(someString), someString).NotShorterThan(3);
         }
 
         [Fact]
@@ -59,7 +58,7 @@ namespace NSquared2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-            Contract.Require(nameof(someString), someString).NotShorterThan(3));
+            Ensure.That(nameof(someString), someString).NotShorterThan(3));
         }
 
         [Fact]
@@ -70,7 +69,7 @@ namespace NSquared2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentNullException>(() =>
-            Contract.Require(nameof(someString), someString).NotShorterThan(3));
+            Ensure.That(nameof(someString), someString).NotShorterThan(3));
         }
     }
 
@@ -83,7 +82,7 @@ namespace NSquared2.DbC.Test
             var someString = "A12";
 
             ////Act & Test
-            Contract.Require(nameof(someString), someString).NotLongerThan(3);
+            Ensure.That(nameof(someString), someString).NotLongerThan(3);
         }
 
         [Fact]
@@ -93,7 +92,7 @@ namespace NSquared2.DbC.Test
             var someString = "A1";
 
             ////Act & Test
-            Contract.Require(nameof(someString), someString).NotLongerThan(3);
+            Ensure.That(nameof(someString), someString).NotLongerThan(3);
         }
 
         [Fact]
@@ -104,7 +103,7 @@ namespace NSquared2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-            Contract.Require(nameof(someString), someString).NotLongerThan(3));
+            Ensure.That(nameof(someString), someString).NotLongerThan(3));
         }
 
         [Fact]
@@ -115,13 +114,13 @@ namespace NSquared2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentNullException>(() =>
-            Contract.Require(nameof(someString), someString).NotLongerThan(3));
+            Ensure.That(nameof(someString), someString).NotLongerThan(3));
         }
     }
 
     public class StartsWith
     {
-
+        
     }
 
     public class EndsWith

@@ -1,8 +1,7 @@
 ﻿using System;
-using NSquared2.DbC.Test.ObjectValidationTest;
 using Xunit;
 
-namespace NS2.DbC.Test
+namespace NS2.Verify.Test.ObjectValidationTest
 {
     public class NotDefault
     {
@@ -14,7 +13,7 @@ namespace NS2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-                Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
+                Ensure.That(nameof(fakeObject), fakeObject).NotDefault());
         }
 
 
@@ -25,7 +24,7 @@ namespace NS2.DbC.Test
             Guid guid = Guid.NewGuid();
 
             ////Act
-            Contract.Require(nameof(guid), guid).NotDefault();
+            Ensure.That(nameof(guid), guid).NotDefault();
         }
 
         [Fact]
@@ -36,7 +35,7 @@ namespace NS2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-                Contract.Require(nameof(guid), guid).NotDefault());
+                Ensure.That(nameof(guid), guid).NotDefault());
         }
 
         [Fact]
@@ -47,7 +46,7 @@ namespace NS2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-                Contract.Require(nameof(fakeObject), fakeObject).NotDefault());
+                Ensure.That(nameof(fakeObject), fakeObject).NotDefault());
         }
 
         [Fact]
@@ -57,7 +56,7 @@ namespace NS2.DbC.Test
             var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act
-            Contract.Require(nameof(fakeObject), fakeObject).NotDefault();
+            Ensure.That(nameof(fakeObject), fakeObject).NotDefault();
         }
 
     }
@@ -72,7 +71,7 @@ namespace NS2.DbC.Test
             var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act
-            Contract.Require(nameof(fakeObject), fakeObject).IsOfType(fakeObject.GetType());
+            Ensure.That(nameof(fakeObject), fakeObject).IsOfType(fakeObject.GetType());
         }
 
         [Fact]
@@ -83,7 +82,7 @@ namespace NS2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-                Contract.Require(nameof(fakeObject), fakeObject).IsOfType(GetType()));
+                Ensure.That(nameof(fakeObject), fakeObject).IsOfType(GetType()));
         }
     }
 
@@ -97,7 +96,7 @@ namespace NS2.DbC.Test
             var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act
-            Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe");
+            Ensure.That(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe");
 
         }
 
@@ -109,7 +108,7 @@ namespace NS2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-                Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 != null));
+                Ensure.That(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 != null));
 
         }
 
@@ -120,7 +119,7 @@ namespace NS2.DbC.Test
             var fakeObject = new FakeObject { Name = "john Doe", Name2 = "john Doe2" };
 
             ////Act
-            Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 == "john Doe2");
+            Ensure.That(nameof(fakeObject), fakeObject).Must(x => x.Name == "john Doe" && x.Name2 == "john Doe2");
 
         }
 
@@ -133,7 +132,7 @@ namespace NS2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentException>(() =>
-                Contract.Require(nameof(fakeObject), fakeObject).Must(x => x.Name == "Some other"));
+                Ensure.That(nameof(fakeObject), fakeObject).Must(x => x.Name == "Some other"));
 
         }
     }
@@ -147,7 +146,7 @@ namespace NS2.DbC.Test
             var fakeObject = new FakeObject { Name = "john Doe" };
 
             ////Act
-            Contract.Require(nameof(fakeObject), fakeObject).NotNull();
+            Ensure.That(nameof(fakeObject), fakeObject).NotNull();
 
         }
 
@@ -160,7 +159,7 @@ namespace NS2.DbC.Test
 
             ////Act & Test
             Assert.Throws<ArgumentNullException>(() =>
-            Contract.Require(nameof(fakeObject), fakeObject).NotNull());
+            Ensure.That(nameof(fakeObject), fakeObject).NotNull());
 
         }
 
@@ -174,7 +173,7 @@ namespace NS2.DbC.Test
             ////Act
             try
             {
-                Contract.Require(nameof(fakeObject), fakeObject).NotNull();
+                Ensure.That(nameof(fakeObject), fakeObject).NotNull();
             }
             catch (Exception ex)
             {

@@ -1,12 +1,12 @@
-# NS2.Dbc
-This is a Extensible fluent contract validation framework.<br> 
+# NS2.Verify
+This is a Extensible fluent input validation framework.<br> 
 Made for .Net, the solution uses .Net Core <br>
-It does not not have any support for invariant checks.<br>
-Just inputs and outputs.<code>
+Input validation is mostly boring and creates lots of repetable code. And sometime conditions that are hard to read. This framework is made to make input validation more fun, esier and save lots of time regarding reading validations etc. 
+
 ```javascript
 public void AddUsername(string username)
 {
-            Contract.Require(nameof(username), username)
+            Ensure.That(nameof(username), username)
             .NotNull()
             .IsEmail();
 }
@@ -22,7 +22,7 @@ Validation<T>
 Exmampel:</br>
 public static Validation<DateTime> IsNotDefault(this Validation< DateTime> item)
 
-This Contract framework will give you just that Validation< T > objects extension fluent validations methods. 
+This verify framework will give you just that Validation< T > objects extension fluent validations methods. 
 So int, string etc have their own validation methods. 
 </br>
 

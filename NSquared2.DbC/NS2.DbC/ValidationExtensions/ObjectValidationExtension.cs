@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace NS2.DbC
+namespace NS2.Verify
 {
     public static class ObjectValidationExtension
 	{

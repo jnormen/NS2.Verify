@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NS2.DbC.Test", "NSquared2.DbC.Test\NS2.DbC.Test.xproj", "{DB6F0C99-0DBE-402E-A095-3683FEECC338}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NS2.Verify.Test", "NSquared2.DbC.Test\NS2.Verify.Test.xproj", "{DB6F0C99-0DBE-402E-A095-3683FEECC338}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NS2.DbC", "NS2.DbC\NS2.DbC.xproj", "{E6CBE3D9-9A19-4612-8B87-E6C5D0CCF5A6}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NS2.Verify", "NS2.DbC\NS2.Verify.xproj", "{E6CBE3D9-9A19-4612-8B87-E6C5D0CCF5A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6B04A010-767D-4BC9-8E99-370D02D63907}"
+	ProjectSection(SolutionItems) = preProject
+		NSquared2.DbC.Test\global.json = NSquared2.DbC.Test\global.json
+		NS2.DbC\global.json = NS2.DbC\global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

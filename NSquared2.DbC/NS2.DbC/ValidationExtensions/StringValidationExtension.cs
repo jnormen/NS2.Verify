@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace NS2.DbC
+namespace NS2.Verify
 {
     public static class StringValidationExtension
 	{

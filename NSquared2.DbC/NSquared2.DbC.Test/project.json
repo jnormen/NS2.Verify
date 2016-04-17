@@ -1,6 +1,6 @@
 {
     "version": "1.0.0-*",
-    "description": "NS2.Dbc.Test Class Library",
+    "description": "NS2.Verify.Test Class Library",
     "authors": [ "Johan Normén" ],
     "tags": [ "" ],
     "projectUrl": "",
