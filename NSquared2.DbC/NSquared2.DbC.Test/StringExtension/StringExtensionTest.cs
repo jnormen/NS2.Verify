@@ -41,12 +41,82 @@ namespace NSquared2.DbC.Test
 
     public class NotShorterThan
     {
+        [Fact]
+        public void _3_Expect_Sucess()
+        {
+            ////Arrange
+            var someString = "A1234";
 
+            ////Act & Test
+            Contract.Require(nameof(someString), someString).NotShorterThan(3);
+        }
+
+        [Fact]
+        public void _3_With_To_Short_String_Expect_ArgumentOutOfRangeException()
+        {
+            ////Arrange
+            var someString = "A1";
+
+            ////Act & Test
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            Contract.Require(nameof(someString), someString).NotShorterThan(3));
+        }
+
+        [Fact]
+        public void _3_With_To_Null_String_Expect_ArgumentNullException()
+        {
+            ////Arrange
+            string someString = null;
+
+            ////Act & Test
+            Assert.Throws<ArgumentNullException>(() =>
+            Contract.Require(nameof(someString), someString).NotShorterThan(3));
+        }
     }
 
     public class NotLongerThan
     {
+        [Fact]
+        public void _3_Expect_Sucess()
+        {
+            ////Arrange
+            var someString = "A12";
 
+            ////Act & Test
+            Contract.Require(nameof(someString), someString).NotLongerThan(3);
+        }
+
+        [Fact]
+        public void _3_With_Short_String_Expect_Sucess()
+        {
+            ////Arrange
+            var someString = "A1";
+
+            ////Act & Test
+            Contract.Require(nameof(someString), someString).NotLongerThan(3);
+        }
+
+        [Fact]
+        public void _3_With_Big_String_Expect_ArgumentOutOfRangeException()
+        {
+            ////Arrange
+            var someString = "A198796969696986986986986969869869869868969869869";
+
+            ////Act & Test
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            Contract.Require(nameof(someString), someString).NotLongerThan(3));
+        }
+
+        [Fact]
+        public void _3_With_To_Null_String_Expect_ArgumentNullException()
+        {
+            ////Arrange
+            string someString = null;
+
+            ////Act & Test
+            Assert.Throws<ArgumentNullException>(() =>
+            Contract.Require(nameof(someString), someString).NotLongerThan(3));
+        }
     }
 
     public class StartsWith

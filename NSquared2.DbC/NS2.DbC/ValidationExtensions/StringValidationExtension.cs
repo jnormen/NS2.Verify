@@ -9,7 +9,10 @@ namespace NS2.DbC
 		[DebuggerHidden]
 		public static Validation<string> NotShorterThan(this Validation<string> item, int value)
 		{
-			if (item.Value.Length < value)
+            if (item.Value == null)
+                throw new ArgumentNullException($"Parameter '{item.ParameterName}' cannot be null or empty string!");
+
+            if (item.Value.Length < value)
 				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be less than '{value}'");
 
 			return item;
@@ -18,7 +21,10 @@ namespace NS2.DbC
 		[DebuggerHidden]
 		public static Validation<string> NotLongerThan(this Validation<string> item, int value)
 		{
-			if (item.Value.Length > value)
+            if (item.Value == null)
+                throw new ArgumentNullException($"Parameter '{item.ParameterName}' cannot be null or empty string!");
+
+            if (item.Value.Length > value)
 				throw new ArgumentOutOfRangeException($"InputParam '{item.ParameterName}' cannot be greater than '{value}'");
 
 			return item;
@@ -57,7 +63,10 @@ namespace NS2.DbC
 		[DebuggerHidden]
 		public static Validation<string> IsBasedOn(this Validation<string> item, string regularExpression)
 		{
-			if (string.IsNullOrWhiteSpace(regularExpression))
+            if (item.Value == null)
+                throw new ArgumentNullException($"Parameter '{item.ParameterName}' cannot be null or empty string!");
+
+            if (string.IsNullOrWhiteSpace(regularExpression))
 				throw new ArgumentException("NotBasedOn cannot have an empty or null regularExspression!");
 
 			if (!Regex.IsMatch(item.Value, regularExpression))
