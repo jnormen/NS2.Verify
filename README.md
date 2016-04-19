@@ -61,5 +61,6 @@ public static class StringValidationExtension
 ```
 </code>
 		
-
+Based on an old framework we worked on 2008 when we talked abour Design By Contract in Swenug (Sweden .Net User group) and other forums. 
+https://rogeralsing.com/2008/05/10/followup-how-to-validate-a-methods-arguments/
 
